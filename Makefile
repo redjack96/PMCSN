@@ -8,7 +8,7 @@ CC = gcc
 CFLAGS = -g -Wall
 LDFLAGS = -lm
 
-OBJFILES = acs buffon bvs cdh craps det ddh estimate galileo hat msq rng.o rngs.o rvgs.o rvms.o san sieve sis1 sis2 sis3 sis4 ssms ssq1 ssq2 ssq3 ssq4 ttr uvs
+OBJFILES = acs buffon bvs cdh craps det ddh estimate galileo hat msq rng.o rngs.o rvgs.o rvms.o san sieve sis1 sis2 sis3 sis4 ssms ssq1 ssq2 ssq3 ssq4 ttr uvs mbp1
 
 all: $(OBJFILES)
 
@@ -95,3 +95,8 @@ uvs: uvs.c rngs.o rvgs.o
 
 clean:
 	/bin/rm -f $(OBJFILES) core*
+
+
+# MIEI ESERCIZI
+mbp1: mbp1.c rngs.o
+	$(CC) $(LDFLAGS) $^ -o $@

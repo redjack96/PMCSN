@@ -17,7 +17,7 @@
 #define MAXIMUM    80             /* 'S' inventory policy parameter > s  */
 #define START      0.0
 #define STOP       100.0
-#define INFINITY   (100.0 * STOP)
+#define THE_INFINITY   (100.0 * STOP)
 
 
 
@@ -110,7 +110,7 @@ int main(void) {
     t.current = START;
     t.demand = GetDemand();              /* schedule the first demand */
     t.review = t.current + 1.0;          /* schedule the first review */
-    t.arrive = INFINITY;                 /* no order arrival pending  */
+    t.arrive = THE_INFINITY;                 /* no order arrival pending  */
 
     while (t.current < STOP) {
         t.next = Min(t.demand, t.review, t.arrive);
@@ -138,7 +138,7 @@ int main(void) {
         } else {                           /* process an inventory order arrival*/
             inventory += order;
             order = 0;
-            t.arrive = INFINITY;
+            t.arrive = THE_INFINITY;
         }
     }
 

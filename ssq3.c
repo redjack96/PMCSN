@@ -19,7 +19,7 @@
 
 #define START         0.0              /* initial time                   */
 #define STOP      20000.0              /* terminal (close the door) time */
-#define INFINITY   (100.0 * STOP)      /* must be much larger than STOP  */
+#define THE_INFINITY   (100.0 * STOP)      /* must be much larger than STOP  */
 
 
    double Min(double a, double c)
@@ -100,7 +100,7 @@
   PlantSeeds(123456789);
   t.current    = START;           /* set the clock                         */
   t.arrival    = GetArrival();    /* schedule the first arrival            */
-  t.completion = INFINITY;        /* the first event can't be a completion */
+  t.completion = THE_INFINITY;        /* the first event can't be a completion */
 
   while ((t.arrival < STOP) || (number > 0)) {
     t.next          = Min(t.arrival, t.completion);  /* next event time   */
@@ -116,7 +116,7 @@
       t.arrival     = GetArrival();
       if (t.arrival > STOP)  {
         t.last      = t.current;
-        t.arrival   = INFINITY;
+        t.arrival   = THE_INFINITY;
       }
       if (number == 1)
         t.completion = t.current + GetService();
@@ -128,7 +128,7 @@
       if (number > 0)
         t.completion = t.current + GetService();
       else
-        t.completion = INFINITY;
+        t.completion = THE_INFINITY;
     }
   } 
 
